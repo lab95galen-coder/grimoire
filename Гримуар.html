@@ -1,0 +1,940 @@
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Стольник - Ассистент Blood on the Clocktower</title>
+    <style>
+        :root {
+            --bg-color: #121214;
+            --card-bg: #1a1a1e;
+            --border-color: #2c2c35;
+            --text-color: #e2e2e9;
+            --accent-color: #9d2a2a;
+            --accent-hover: #bd3a3a;
+        }
+
+        body {
+    background-image: url('Задник.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: rgba(18, 18, 20, 0.85);
+    background-blend-mode: overlay;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #e2e2e9;
+    margin: 0;
+    padding: 10px;
+    padding-bottom: 30px;
+}
+
+        h1, h2, h3 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+.header-logo {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.header-logo img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+        .subtitle {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #8a8a93;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .flex-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        input, button {
+            background-color: #222227;
+            color: #fff;
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        input { flex: 2; }
+        
+        button.btn-add {
+            background-color: var(--accent-color);
+            border: none;
+            flex: 1;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button.btn-add:hover { background-color: var(--accent-hover); }
+
+        .phase-control {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .phase-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .phase-btn {
+            padding: 14px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            border: 1px solid #3d3d45;
+            text-align: center;
+            background-color: #222227;
+            transition: all 0.2s ease;
+        }
+
+        .phase-btn.active-start { background-color: #2a527a; border-color: #3b73ad; color: #fff; }
+        .phase-btn.active-night { background-color: #422a7a; border-color: #5c3bad; color: #fff; }
+        .phase-btn.active-day { background-color: #7a6e2a; border-color: #ad9c3b; color: #fff; }
+
+        .audio-status {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #8ec5fc;
+            margin-top: 4px;
+        }
+
+        .timer-block {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #222227;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-top: 12px;
+        }
+
+        .timer-display {
+            font-size: 1.6rem;
+            font-weight: bold;
+            font-family: monospace;
+            color: #ffda6a;
+        }
+
+        .timer-btn {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border-radius: 6px;
+            background: #333;
+            border: 1px solid #444;
+        }
+
+        .setup-pool {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .setup-item {
+            background: #222227;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .setup-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .role-hint {
+            font-size: 0.8rem;
+            color: #aaa;
+            margin-top: 4px;
+            line-height: 1.3;
+        }
+
+        .player-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .player-row {
+            display: flex;
+            flex-direction: column;
+            background: #1f1f24;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 14px;
+            gap: 10px;
+        }
+
+        .player-row.dead {
+            border-color: #444;
+            opacity: 0.7;
+        }
+
+        .player-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #2d2d35;
+            padding-bottom: 6px;
+        }
+
+        .player-name { color: #fff; }
+        .player-role { font-size: 0.9rem; padding: 4px 10px; border-radius: 4px; }
+        
+        .townsfolk { background-color: #1a3a5f; color: #8ec5fc; }
+        .outsider { background-color: #5c3a21; color: #e6b89c; }
+        .minion { background-color: #421212; color: #ff9999; }
+        .demon { background-color: #610505; color: #ff6666; border: 1px solid #ff0000; }
+
+        .status-buttons-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            width: 100%;
+        }
+
+        .full-btn {
+            font-size: 0.9rem;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            text-align: left;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .btn-state-ok { background: #26262b; color: #aaa; }
+        .btn-state-dead { background: #aa3333; color: #fff; border-color: #cc4444; }
+        .btn-state-poison { background: #d4af37; color: #000; font-weight: bold; border-color: #ffd700; }
+        .btn-state-monk { background: #2a7a2a; color: #fff; border-color: #3a9a3a; }
+        .btn-state-vote-yes { background: #44444a; color: #fff; }
+        .btn-state-vote-no { background: #222; color: #666; border-color: #333; }
+
+        .night-guide h3 {
+            margin-top: 15px;
+            text-align: left;
+            font-size: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            color: #d4af37;
+        }
+
+        .night-item {
+            background: #222227;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+            border-left: 4px solid var(--accent-color);
+            line-height: 1.4;
+        }
+        
+        .night-item.inactive {
+            border-left-color: #444;
+            opacity: 0.4;
+        }
+
+        .clear-btn {
+            background: #333;
+            color: #aaa;
+            border: none;
+            padding: 8px;
+            border-radius: 6px;
+            width: 100%;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+   <div style="text-align: center; margin: 20px 0;">
+        <img src="ЛОГО.png" style="width: 250px; height: auto;">
+    </div>
+
+    <div class="card" id="setupCard">
+        <h2>Новая партия</h2>
+        <div class="flex-row">
+            <input type="number" id="totalPlayersCount" placeholder="Количество игроков (5-15)" min="5" max="15">
+            <button class="btn-add" onclick="setupGame()">Рассчитать</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🎬 Саундтрек и Фазы партии</h2>
+        <div class="phase-control">
+<div class="phase-control" style="margin-top: 20px;">
+    <button class="phase-btn" style="background:#2a7a40; border-color:#1e5c30;" onclick="endGame('good')">Победа Горожан</button>
+    <button class="phase-btn" style="background:#7a2a2a; border-color:#5c2121;" onclick="endGame('evil')">Победа Демона</button>
+</div>
+            <button id="btnPhaseStart" class="phase-btn" onclick="switchPhase('start')">🚀 НАЧАТЬ ИГРУ (Эпилог - 1 раз)</button>
+            <div class="phase-grid-3">
+                <button id="btnPhaseNight" class="phase-btn" onclick="switchPhase('night')">🌌 НОЧЬ (По кругу)</button>
+                <button id="btnPhaseDay" class="phase-btn" onclick="switchPhase('day')">☀️ ДЕНЬ (По кругу)</button>
+                <button id="btnPhaseStop" class="phase-btn" style="border-color:#5c2121; color:#ff8888;" onclick="switchPhase('stop')">🛑 СТОП ЗВУК</button>
+            </div>
+        </div>
+        <div id="audioStatusText" class="audio-status">Музыка готова к запуску</div>
+
+        <div class="timer-block">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span>⏱ Последнее слово:</span>
+                <input type="number" id="timerInput" value="30" style="padding: 4px; width: 50px; text-align: center; font-size: 0.9rem;">
+                <span>сек.</span>
+            </div>
+            <div class="timer-display" id="timerDisplay">00:30</div>
+            <div style="display: flex; gap: 4px;">
+                <button class="timer-btn" id="timerStartBtn" onclick="toggleTimer()" style="background: #2a7a2a;">Старт</button>
+                <button class="timer-btn" onclick="resetTimer()">Сброс</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" id="namingCard" style="display:none;">
+        <h2>Присвоить имя роли</h2>
+        <div id="poolContainer" class="setup-pool"></div>
+    </div>
+
+    <div class="card">
+        <h2>Игроки за столом</h2>
+        <div id="playerList" class="player-list"></div>
+    </div>
+
+    <div class="card night-guide">
+        <h2>Порядок Ночи (Сценарий)</h2>
+        <h3>🌃 ПЕРВАЯ НОЧЬ ИГРЫ</h3>
+        <div id="firstNightOrder"></div>
+        <h3>🔄 КАЖДАЯ ПОСЛЕДУЮЩАЯ НОЧЬ</h3>
+        <div id="everyNightOrder"></div>
+    </div>
+
+    <button class="clear-btn" onclick="clearGrimoire()">Сбросить всё и заново</button>
+</div>
+
+<audio id="audioEpilogue" src="Эпилог.mp3"></audio>
+<audio id="audioNight" src="Ночь.mp3" loop></audio>
+<audio id="audioSquare" src="Центральная площадь.mp3" loop></audio>
+<audio id="audioClock" src="Часы.mp3" loop></audio>
+
+<script>
+    let currentAudioTrack = null;
+    let backgroundTrackBackup = null; 
+    let backgroundTrackNameBackup = "";
+    
+    let timerInterval = null;
+    let timeLeft = 30; 
+    let timerRunning = false;
+    let clockFadeInterval = null; // Для плавного изменения громкости часов
+
+    function fadeAndPlay(newTrack, trackName, isTimerCall = false, targetVolume = 1.0) {
+        const fadeTime = 800;
+        const statusText = document.getElementById('audioStatusText');
+
+        function fadeOut(audio, callback) {
+            if (audio.paused) {
+                if (callback) callback();
+                return;
+            }
+            let volume = audio.volume;
+            const interval = 50;
+            const delta = volume / (fadeTime / interval);
+            
+            const timer = setInterval(() => {
+                volume -= delta;
+                if (volume <= 0) {
+                    clearInterval(timer);
+                    audio.pause();
+                    audio.currentTime = 0;
+                    if (callback) callback();
+                } else {
+                    audio.volume = volume;
+                }
+            }, interval);
+        }
+
+        if (isTimerCall && currentAudioTrack && currentAudioTrack.id !== 'audioClock') {
+            backgroundTrackBackup = currentAudioTrack;
+            backgroundTrackNameBackup = statusText.textContent;
+        }
+
+        if (currentAudioTrack) {
+            fadeOut(currentAudioTrack, () => {
+                startNewTrack();
+            });
+        } else {
+            startNewTrack();
+        }
+
+        function startNewTrack() {
+            if (!newTrack) {
+                currentAudioTrack = null;
+                statusText.textContent = "Аудио остановлено";
+                return;
+            }
+            
+            // Если запускаем Часы, делаем плавное повышение громкости (Fade In) до 50%
+            if (newTrack.id === 'audioClock') {
+                newTrack.volume = 0;
+                newTrack.play()
+                    .then(() => {
+                        currentAudioTrack = newTrack;
+                        statusText.textContent = `Сейчас играет: ${trackName}`;
+                        
+                        let vol = 0;
+                        clearInterval(clockFadeInterval);
+                        clockFadeInterval = setInterval(() => {
+                            vol += 0.05;
+                            if (vol >= targetVolume) {
+                                newTrack.volume = targetVolume;
+                                clearInterval(clockFadeInterval);
+                            } else {
+                                newTrack.volume = vol;
+                            }
+                        }, 100); // Повышаем за 1 секунду
+                    })
+                    .catch(err => {
+                        statusText.textContent = "⚠️ Нажмите на страницу, чтобы разрешить звук в браузере";
+                    });
+            } else {
+                // Обычные треки на 100% громкости
+                newTrack.volume = 1.0;
+                newTrack.play()
+                    .then(() => {
+                        currentAudioTrack = newTrack;
+                        statusText.textContent = `Сейчас играет: ${trackName}`;
+                    })
+                    .catch(err => {
+                        statusText.textContent = "⚠️ Нажмите на страницу, чтобы разрешить звук в браузере";
+                    });
+            }
+        }
+    }
+
+    function switchPhase(phase) {
+        backgroundTrackBackup = null;
+        backgroundTrackNameBackup = "";
+        clearInterval(clockFadeInterval);
+
+        document.getElementById('btnPhaseStart').classList.remove('active-start');
+        document.getElementById('btnPhaseNight').classList.remove('active-night');
+        document.getElementById('btnPhaseDay').classList.remove('active-day');
+
+        if (phase === 'start') {
+            document.getElementById('btnPhaseStart').classList.add('active-start');
+            fadeAndPlay(document.getElementById('audioEpilogue'), "📊 Эпилог (Введение в игру — прозвучит 1 раз)");
+        } else if (phase === 'night') {
+            document.getElementById('btnPhaseNight').classList.add('active-night');
+            fadeAndPlay(document.getElementById('audioNight'), "🌌 Мрачная Ночь (Зациклено)");
+        } else if (phase === 'day') {
+            document.getElementById('btnPhaseDay').classList.add('active-day');
+            fadeAndPlay(document.getElementById('audioSquare'), "☀️ Центральная Площадь (Зациклено)");
+        } else if (phase === 'stop') {
+            fadeAndPlay(null, "");
+        }
+    }
+
+    function updateTimerDisplay() {
+        let mins = Math.floor(timeLeft / 60);
+        let secs = timeLeft % 60;
+        document.getElementById('timerDisplay').textContent = 
+            (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+    }
+
+    // Плавное затухание ТОЛЬКО для трека Часы
+    function fadeOutClock(clockTrack, callback) {
+        clearInterval(clockFadeInterval);
+        let vol = clockTrack.volume;
+        clockFadeInterval = setInterval(() => {
+            vol -= 0.05;
+            if (vol <= 0) {
+                clockTrack.volume = 0;
+                clockTrack.pause();
+                clearInterval(clockFadeInterval);
+                if (callback) callback();
+            } else {
+                clockTrack.volume = vol;
+            }
+        }, 80); // Понижаем примерно за 0.8 сек
+    }
+
+    function toggleTimer() {
+        const startBtn = document.getElementById('timerStartBtn');
+        const clockTrack = document.getElementById('audioClock');
+
+        if (timerRunning) {
+            // ПАУЗА
+            clearInterval(timerInterval);
+            timerRunning = false;
+            startBtn.textContent = 'Старт';
+            startBtn.style.background = '#2a7a2a';
+            
+            if (currentAudioTrack === clockTrack) {
+                fadeOutClock(clockTrack);
+            }
+        } else {
+            // СТАРТ
+            if (timerInterval === null && !timerRunning) {
+                const inputVal = parseInt(document.getElementById('timerInput').value);
+                timeLeft = isNaN(inputVal) ? 30 : inputVal;
+            }
+            
+            timerRunning = true;
+            startBtn.textContent = 'Пауза';
+            startBtn.style.background = '#a67c1e';
+            
+            if (currentAudioTrack === clockTrack) {
+                // Если сняли с паузы, плавно возвращаем к 50% громкости
+                clockTrack.play();
+                let vol = clockTrack.volume;
+                clearInterval(clockFadeInterval);
+                clockFadeInterval = setInterval(() => {
+                    vol += 0.05;
+                    if (vol >= 0.5) {
+                        clockTrack.volume = 0.5;
+                        clearInterval(clockFadeInterval);
+                    } else {
+                        clockTrack.volume = vol;
+                    }
+                }, 100);
+            } else {
+                // Запускаем Часы с громкостью 0.5 (50%)
+                fadeAndPlay(clockTrack, "⏱ Последнее слово (Часы.mp3 — 50% громкости)", true, 0.5);
+            }
+            
+            timerInterval = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                    timerRunning = false;
+                    startBtn.textContent = 'Старт';
+                    startBtn.style.background = '#2a7a2a';
+                    
+                    // Звуковой сигнал окончания времени
+                    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.frequency.value = 587.33;
+                    gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.4);
+
+                    // Плавно тушим часы и возвращаем фон дня/ночи
+                    fadeOutClock(clockTrack, () => {
+                        if (backgroundTrackBackup) {
+                            fadeAndPlay(backgroundTrackBackup, backgroundTrackNameBackup.replace("Сейчас играет: ", ""));
+                            backgroundTrackBackup = null;
+                            backgroundTrackNameBackup = "";
+                        } else {
+                            fadeAndPlay(null, "");
+                        }
+                    });
+                } else {
+                    timeLeft--;
+                    updateTimerDisplay();
+                }
+            }, 1000);
+        }
+    }
+
+    function resetTimer() {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        timerRunning = false;
+        
+        const inputVal = parseInt(document.getElementById('timerInput').value);
+        timeLeft = isNaN(inputVal) ? 30 : inputVal;
+        updateTimerDisplay();
+        
+        const startBtn = document.getElementById('timerStartBtn');
+        startBtn.textContent = 'Старт';
+        startBtn.style.background = '#2a7a2a';
+
+        const clockTrack = document.getElementById('audioClock');
+        
+        if (currentAudioTrack === clockTrack) {
+            fadeOutClock(clockTrack, () => {
+                if (backgroundTrackBackup) {
+                    fadeAndPlay(backgroundTrackBackup, backgroundTrackNameBackup.replace("Сейчас играет: ", ""));
+                    backgroundTrackBackup = null;
+                    backgroundTrackNameBackup = "";
+                } else {
+                    fadeAndPlay(null, "");
+                }
+            });
+        }
+    }
+
+    document.getElementById('timerInput').addEventListener('input', function() {
+        if (!timerRunning) {
+            timeLeft = parseInt(this.value) || 30;
+            updateTimerDisplay();
+        }
+    });
+
+    const allHeroes = [
+        { name: "Чтец", team: "townsfolk", activity: "1", hint: "В 1-ю ночь узнаёт, кто Изгой за столом." },
+        { name: "Повар", team: "townsfolk", activity: "1", hint: "В 1-ю ночь узнаёт имя одного гарантированно чистого мирного горожанина." },
+        { name: "Смотритель", team: "townsfolk", activity: "1", hint: "В 1-ю ночь выбирает игрока. Когда Смотритель погибнет, Стольник тайно раскрыет ему истинную роль этой цели." },
+        { name: "Эхо", team: "townsfolk", activity: "1", hint: "В 1-ю ночь выбирает игрока. Если Демон ночью убивает Эхо, выбранный злой приспешник тоже погибает." },
+        { name: "Глашатай", team: "townsfolk", activity: "1", hint: "В 1-ю ночь заявляет факт Стольнику. Если факт правдив, Стольник устроит дополнительную смерть в одну из ночей." },
+        { name: "Заклинатель", team: "townsfolk", activity: "1", hint: "В 1-ю ночь выбирает цель. При дневной казни этой цели Стольник публично подтверждает её роль." },
+        { name: "Знахарка", team: "townsfolk", activity: "1", hint: "В 1-ю ночь выбирает двух игроков. Если Демон проголосует днем за их казнь, Стольник подаст Знахарке знак." },
+        { name: "Кукловод", team: "townsfolk", activity: "1", hint: "В 1-ю ночь выбирает «куклу». Один раз за игру может тайно заставить Стольника развернуть голос этой куклы наоборот." },
+        { name: "Гадалка", team: "townsfolk", activity: "every", hint: "Каждую ночь проверяет двух игроков: есть ли среди них Демон. (Помнить про ложную цель-селедку)." },
+        { name: "Монах", team: "townsfolk", activity: "every", hint: "Каждую ночь выбирает игрока (кроме себя) для абсолютной защиты от ночной атаки Демона." },
+        { name: "Фокусник", team: "townsfolk", activity: "every", hint: "Каждую ночь выбирает игрока. Пытается угадать и временно поменяться ролями с Демоном." },
+        { name: "Медиум", team: "townsfolk", activity: "every", hint: "Каждую ночь выбирает цель. Если эта цель днем номинирует Медиума, она сама автоматически идет на казнь." },
+        { name: "Эмпат", team: "townsfolk", activity: "day", hint: "Действует ДНЕМ. Один раз за игру может публично встать и указать на игрока, пытаясь мгновенно уничтожить Демона." },
+        { name: "Святой", team: "townsfolk", activity: "day", hint: "Пассивный. Если город по ошибке казнит Святого днем — Добрая команда мгновенно проигрывает всю игру." },
+        { name: "Рыцарь", team: "townsfolk", activity: "day", hint: "Пассивный. Обладает железным иммунитетом к ночным убийствам Демона (Стольник отменяет нападение)." },
+        { name: "Пьяница", team: "outsider", activity: "day", hint: "Думает, что он мирный, но его сила заблокирована, а получаемая информация — ложная (контролируется Стольником)." },
+        { name: "Отшельник", team: "outsider", activity: "day", hint: "Пассивный. Из-за своей ауры при любых ночных проверках (Гадалка и др.) может казаться Приспешником или Демоном." },
+        { name: "Травитель", team: "minion", activity: "every", hint: "Злой. Каждую ночь отравляет одного игрока: его сила отключается, а информация становится ложной." },
+        { name: "Падшая", team: "minion", activity: "1", hint: "Злой. Если в игре >= 5 живых игроков и Демона казнят, Падшая забирает его силу и сама становится новым Демоном." },
+        { name: "Барон", team: "minion", activity: "1", hint: "Злой. Своим присутствием сразу в начале игры добавляет в пул +2 Изгоя за счет удаления двух Горожан." },
+        { name: "Лилит (Демон)", team: "demon", activity: "every", hint: "Главный враг. Каждую ночь просыпается, чтобы выбрать и убить одного игрока за столом." }
+    ];
+
+    const distributionTable = {
+        5:  { townsfolk: 3, outsider: 0, minion: 1 },
+        6:  { townsfolk: 3, outsider: 1, minion: 1 },
+        7:  { townsfolk: 5, outsider: 0, minion: 1 },
+        8:  { townsfolk: 5, outsider: 1, minion: 1 },
+        9:  { townsfolk: 5, outsider: 2, minion: 1 },
+        10: { townsfolk: 7, outsider: 0, minion: 2 },
+        11: { townsfolk: 7, outsider: 1, minion: 2 },
+        12: { townsfolk: 7, outsider: 2, minion: 2 },
+        13: { townsfolk: 9, outsider: 1, minion: 2 },
+        14: { townsfolk: 9, outsider: 1, minion: 3 },
+        15: { townsfolk: 9, outsider: 2, minion: 3 }
+    };
+
+    const firstNightSequence = ["Травитель", "Барон", "Падшая", "Лилит (Демон)", "Чтец", "Повар", "Смотритель", "Эхо", "Глашатай", "Заклинатель", "Знахарка", "Кукловод"];
+    const everyNightSequence = ["Травитель", "Монах", "Фокусник", "Лилит (Демон)", "Гадалка", "Медиум"];
+
+    let players = [];
+    let currentPool = [];
+
+    function setupGame() {
+        const countInput = document.getElementById('totalPlayersCount');
+        const count = parseInt(countInput.value);
+
+        if (isNaN(count) || count < 5 || count > 15) {
+            alert("Введите число игроков от 5 до 15");
+            return;
+        }
+
+        const limits = distributionTable[count];
+        
+        let tPool = allHeroes.filter(h => h.team === 'townsfolk');
+        let oPool = allHeroes.filter(h => h.team === 'outsider');
+        let mPool = allHeroes.filter(h => h.team === 'minion');
+        let dPool = allHeroes.filter(h => h.team === 'demon');
+
+        let shuffle = (arr) => arr.map(a => ({sort: Math.random(), value: a})).sort((a, b) => a.sort - b.sort).map(a => a.value);
+
+        let selectedTownsfolk = shuffle(tPool).slice(0, limits.townsfolk);
+        let selectedOutsiders = shuffle(oPool).slice(0, limits.outsider);
+        let selectedMinions = shuffle(mPool).slice(0, limits.minion);
+        let selectedDemon = shuffle(dPool).slice(0, 1);
+
+        currentPool = [];
+        currentPool = currentPool.concat(selectedTownsfolk, selectedOutsiders, selectedMinions, selectedDemon);
+        players = []; 
+
+        render();
+    }
+
+    function assignNameToRole(index) {
+        const nameInput = document.getElementById(`input-pool-${index}`);
+        const name = nameInput.value.trim();
+
+        if (!name) {
+            alert("Введите имя игрока!");
+            return;
+        }
+
+        const role = currentPool[index];
+
+        players.push({
+            id: Date.now() + Math.random(),
+            name: name,
+            role: role.name,
+            team: role.team,
+            activity: role.activity,
+            hint: role.hint,
+            dead: false,
+            poisoned: false,
+            protected: false,
+            hasVote: true
+        });
+
+        currentPool.splice(index, 1);
+        render();
+    }
+
+function toggleDead(id) {
+    const p = players.find(x => x.id === id);
+    if(p) {
+        p.dead = !p.dead;
+        if(!p.dead) p.hasVote = true;
+        
+        render(); // У вас функция называется render, а не renderPlayers
+        checkGameOver();
+    }
+}
+
+    function toggleVote(id) {
+        const p = players.find(x => x.id === id);
+        if(p && p.dead) p.hasVote = !p.hasVote;
+        render();
+    }
+
+    function togglePoison(id) {
+        const p = players.find(x => x.id === id);
+        if(p) p.poisoned = !p.poisoned;
+        render();
+    }
+
+    function toggleProject(id) {
+        const p = players.find(x => x.id === id);
+        if(p) p.protected = !p.protected;
+        render();
+    }
+
+    function deletePlayer(id) {
+        const p = players.find(x => x.id !== id);
+        if(p) {
+            currentPool.push({ name: p.role, team: p.team, activity: p.activity, hint: p.hint });
+            players = players.filter(x => x.id !== id);
+        }
+        render();
+    }
+
+    function clearGrimoire() {
+        switchPhase('stop');
+        resetTimer();
+        players = [];
+        currentPool = [];
+        document.getElementById('totalPlayersCount').value = '';
+        render();
+    }
+
+    function render() {
+        const namingCard = document.getElementById('namingCard');
+        const poolContainer = document.getElementById('poolContainer');
+        poolContainer.innerHTML = '';
+
+        if(currentPool.length > 0) {
+            namingCard.style.display = 'block';
+            currentPool.forEach((role, idx) => {
+                const div = document.createElement('div');
+                div.className = 'setup-item';
+                div.innerHTML = `
+                    <div class="setup-item-header">
+                        <span class="player-role ${role.team}" style="font-weight:bold;">${role.name}</span>
+                        <div style="display:flex; gap:5px;">
+                            <input type="text" id="input-pool-${idx}" placeholder="Имя игрока" autocomplete="off" style="padding:6px; max-width:140px;">
+                            <button class="btn-add" style="padding:6px 12px;" onclick="assignNameToRole(${idx})">✓</button>
+                        </div>
+                    </div>
+                    <div class="role-hint"><b>Сила:</b> ${role.hint}</div>
+                `;
+                poolContainer.appendChild(div);
+            });
+        } else {
+            namingCard.style.display = 'none';
+        }
+
+        const listContainer = document.getElementById('playerList');
+        listContainer.innerHTML = '';
+
+        if(players.length === 0) {
+            listContainer.innerHTML = '<p style="text-align:center; color:#666;">Введите количество игроков выше для старта расчета</p>';
+        }
+
+        players.forEach(p => {
+            const row = document.createElement('div');
+            row.className = `player-row ${p.dead ? 'dead' : ''}`;
+            
+            row.innerHTML = `
+                <div class="player-info">
+                    <span class="player-name">${p.name}</span>
+                    <span class="player-role ${p.team}">${p.role}</span>
+                </div>
+                <div style="font-size:0.8rem; color:#aaa; margin-bottom:4px;"><b>Памятка:</b> ${p.hint}</div>
+                
+                <div class="status-buttons-grid">
+                    <div class="full-btn ${p.dead ? 'btn-state-dead' : 'btn-state-ok'}" onclick="toggleDead(${p.id})">
+                        <span>Состояние здоровья:</span>
+                        <span><b>${p.dead ? '💀 МЕРТВ' : '🟢 ЖИВ'}</b></span>
+                    </div>
+
+                    ${p.dead ? `
+                        <div class="full-btn ${p.hasVote ? 'btn-state-vote-yes' : 'btn-state-vote-no'}" onclick="toggleVote(${p.id})">
+                            <span>Право на 1 последний голос:</span>
+                            <span><b>${p.hasVote ? '🎫 ДОСТУПЕН' : '❌ ИСПОЛЬЗОВАН'}</b></span>
+                        </div>
+                    ` : ''}
+
+                    <div class="full-btn ${p.poisoned ? 'btn-state-poison' : 'btn-state-ok'}" onclick="togglePoison(${p.id})">
+                        <span>Статус ментальной силы:</span>
+                        <span><b>${p.poisoned ? '🤢 ОТРАВЛЕН / ПЬЯН (Ложь)' : '💎 Здоров (Истина)'}</b></span>
+                    </div>
+
+                    <div class="full-btn ${p.protected ? 'btn-state-monk' : 'btn-state-ok'}" onclick="toggleProject(${p.id})">
+                        <span>Святая защита этой ночью:</span>
+                        <span><b>${p.protected ? '🛡 ЗАЩИЩЕН МОНАХОМ' : '🌕 Нет защиты'}</b></span>
+                    </div>
+
+                    <button style="background:#2a1212; color:#ff8888; border:1px solid #4a1c1c; padding:6px; border-radius:6px; margin-top:4px; font-size:0.85rem;" onclick="deletePlayer(${p.id})">
+                        🗑 Вернуть карту обратно в пул раздачи
+                    </button>
+                </div>
+            `;
+            listContainer.appendChild(row);
+        });
+
+        renderNightOrders();
+    }
+
+    function renderNightOrders() {
+        const firstNightContainer = document.getElementById('firstNightOrder');
+        const everyNightContainer = document.getElementById('everyNightOrder');
+        
+        firstNightContainer.innerHTML = '';
+        everyNightContainer.innerHTML = '';
+
+        firstNightSequence.forEach(role => {
+            const activeInGame = players.filter(p => p.role === role);
+            if (activeInGame.length > 0) {
+                activeInGame.forEach(p => {
+                    const item = document.createElement('div');
+                    item.className = 'night-item';
+                    item.innerHTML = `Разбудить: <b>${p.role}</b> (${p.name}). <br><small style="color:#ccc;">${p.hint}</small> ${p.poisoned ? '<br><span style="color:#ffd700; font-weight:bold;">⚠️ ВНИМАНИЕ: Игрок отравлен/пьян! Выдать ему ЛОЖНУЮ информацию!</span>' : ''}`;
+                    firstNightContainer.appendChild(item);
+                });
+            }
+        });
+
+        everyNightSequence.forEach(role => {
+            const activeInGame = players.filter(p => p.role === role);
+            if (activeInGame.length > 0) {
+                activeInGame.forEach(p => {
+                    const item = document.createElement('div');
+                    item.className = `night-item ${p.dead && p.role !== 'Медиум' ? 'inactive' : ''}`;
+                    
+                    let statusNote = `<br><small style="color:#ccc;">${p.hint}</small>`;
+                    if (p.dead && p.role !== 'Медиум') {
+                        statusNote += '<br><span style="color:#777;">(Игрок мертв — полностью пропускаем его пробуждение)</span>';
+                    } else {
+                        if (p.poisoned) statusNote += '<br><span style="color:#ffd700; font-weight:bold;">⚠️ ВНИМАНИЕ: Отравлен! Его ночной выбор сгорает без эффекта, либо дайте искаженную инфу!</span>';
+                        if (p.protected && p.role === 'Лилит (Демон)') statusNote += '<br><span style="color:#8ec5fc; font-weight:bold;">🛡 ЗАМЕТКА: Если Демон выберет защищенного Монахом игрока, ночного убийства не произойдет.</span>';
+                    }
+
+                    item.innerHTML = `Разбудить: <b>${p.role}</b> (${p.name})${statusNote}`;
+                    everyNightContainer.appendChild(item);
+                });
+            }
+        });
+
+        if(firstNightContainer.innerHTML === '') firstNightContainer.innerHTML = '<p style="color:#555;">Нет активных ролей на 1-ю ночь</p>';
+        if(everyNightContainer.innerHTML === '') everyNightContainer.innerHTML = '<p style="color:#555;">Нет активных ролей на последующие ночи</p>';
+    }
+
+    render();
+// Функция конца игры (звук + алерт)
+function endGame(winner) {
+    // Останавливаем всё
+    document.querySelectorAll('audio').forEach(a => { 
+        a.pause(); 
+        a.currentTime = 0; 
+    });
+
+    if (winner === 'good') {
+        const sound = document.getElementById('soundGood');
+        if (sound) sound.play();
+        alert("Победа Горожан!");
+    } else if (winner === 'evil') {
+        const sound = document.getElementById('soundEvil');
+        if (sound) sound.play();
+        alert("Победа Демона!");
+    }
+}
+
+// Функция проверки условий победы
+function checkGameOver() {
+    let livingGood = 0;
+    let livingEvil = 0;
+    let isDemonAlive = false;
+
+    players.forEach(p => {
+        if (!p.dead) {
+            if (p.team === 'demon') { livingEvil++; isDemonAlive = true; }
+            else if (p.team === 'minion') { livingEvil++; }
+            else if (p.team === 'townsfolk' || p.team === 'outsider') { livingGood++; }
+        }
+    });
+
+    if (!isDemonAlive) { endGame('good'); }
+    else if (livingEvil > 0 && livingGood <= 1) { endGame('evil'); }
+}
+</script>
+<audio id="soundGood" src="Добро.mp3" preload="auto"></audio>
+<audio id="soundEvil" src="Демон.mp3" preload="auto"></audio>
+
+<div style="text-align: center; margin: 20px 0;">
+    <button onclick="endGame('good')">Победа Горожан</button>
+    <button onclick="endGame('evil')">Победа Демона</button>
+</div>
+</body>
+</html>

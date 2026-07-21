@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -17,19 +15,19 @@
         }
 
         body {
-    background-image: url('Задник.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-color: rgba(18, 18, 20, 0.85);
-    background-blend-mode: overlay;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    color: #e2e2e9;
-    margin: 0;
-    padding: 10px;
-    padding-bottom: 30px;
-}
+            background-image: url('Задник.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: rgba(18, 18, 20, 0.85);
+            background-blend-mode: overlay;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #e2e2e9;
+            margin: 0;
+            padding: 10px;
+            padding-bottom: 30px;
+        }
 
         h1, h2, h3 {
             text-align: center;
@@ -37,24 +35,16 @@
             margin-bottom: 5px;
         }
 
-.header-logo {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.header-logo img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-        .subtitle {
+        .header-logo {
             text-align: center;
-            font-size: 0.9rem;
-            color: #8a8a93;
-            margin-top: 0;
-            margin-bottom: 20px;
+            margin: 20px 0;
+        }
+
+        .header-logo img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
         }
 
         .container {
@@ -169,92 +159,34 @@
             margin-top: 10px;
         }
 
-        .setup-item {
-            background: #222227;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-
-        .setup-item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 6px;
-        }
-
-        .role-hint {
-            font-size: 0.8rem;
-            color: #aaa;
-            margin-top: 4px;
-            line-height: 1.3;
-        }
-
         .player-list {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
-        .player-row {
-            display: flex;
-            flex-direction: column;
-            background: #1f1f24;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 14px;
-            gap: 10px;
+        /* ЦВЕТА КОМАНД И КАРТОЧЕК */
+        .card-горожанин {
+            background: #121e2b !important;
+            border: 2px solid #3399ff !important;
+        }
+        .card-изгой {
+            background: #23201d !important;
+            border: 2px solid #d4c5b9 !important;
+        }
+        .card-приспешник {
+            background: #2b1212 !important;
+            border: 2px solid #ff4444 !important;
+        }
+        .card-демон {
+            background: #380808 !important;
+            border: 2px solid #ff0000 !important;
         }
 
-        .player-row.dead {
-            border-color: #444;
-            opacity: 0.7;
-        }
-
-        .player-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: bold;
-            font-size: 1.1rem;
-            border-bottom: 1px solid #2d2d35;
-            padding-bottom: 6px;
-        }
-
-        .player-name { color: #fff; }
-        .player-role { font-size: 0.9rem; padding: 4px 10px; border-radius: 4px; }
-        
-        .townsfolk { background-color: #1a3a5f; color: #8ec5fc; }
-        .outsider { background-color: #5c3a21; color: #e6b89c; }
-        .minion { background-color: #421212; color: #ff9999; }
-        .demon { background-color: #610505; color: #ff6666; border: 1px solid #ff0000; }
-
-        .status-buttons-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            width: 100%;
-        }
-
-        .full-btn {
-            font-size: 0.9rem;
-            padding: 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            border: 1px solid var(--border-color);
-            text-align: left;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .btn-state-ok { background: #26262b; color: #aaa; }
-        .btn-state-dead { background: #aa3333; color: #fff; border-color: #cc4444; }
-        .btn-state-poison { background: #d4af37; color: #000; font-weight: bold; border-color: #ffd700; }
-        .btn-state-monk { background: #2a7a2a; color: #fff; border-color: #3a9a3a; }
-        .btn-state-vote-yes { background: #44444a; color: #fff; }
-        .btn-state-vote-no { background: #222; color: #666; border-color: #333; }
+        .badge-горожанин { color: #8ec5fc; }
+        .badge-изгой { color: #e6d3c3; }
+        .badge-приспешник { color: #ff9999; }
+        .badge-демон { color: #ff4444; font-weight: bold; }
 
         .night-guide h3 {
             margin-top: 15px;
@@ -263,21 +195,6 @@
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 5px;
             color: #d4af37;
-        }
-
-        .night-item {
-            background: #222227;
-            padding: 10px;
-            border-radius: 6px;
-            margin-bottom: 6px;
-            font-size: 0.95rem;
-            border-left: 4px solid var(--accent-color);
-            line-height: 1.4;
-        }
-        
-        .night-item.inactive {
-            border-left-color: #444;
-            opacity: 0.4;
         }
 
         .clear-btn {
@@ -295,7 +212,7 @@
 <body>
 
 <div class="container">
-   <div style="text-align: center; margin: 20px 0;">
+    <div style="text-align: center; margin: 20px 0;">
         <img src="ЛОГО.png" style="width: 250px; height: auto;">
     </div>
 
@@ -308,17 +225,17 @@
     </div>
 
     <div class="card">
-        <h2>🎬 Саундтрек и Фазы партии</h2>
+        <h2>🎹 Саундтрек и Фазы партии</h2>
         <div class="phase-control">
-<div class="phase-control" style="margin-top: 20px;">
-    <button class="phase-btn" style="background:#2a7a40; border-color:#1e5c30;" onclick="endGame('good')">Победа Горожан</button>
-    <button class="phase-btn" style="background:#7a2a2a; border-color:#5c2121;" onclick="endGame('evil')">Победа Демона</button>
-</div>
-            <button id="btnPhaseStart" class="phase-btn" onclick="switchPhase('start')">🚀 НАЧАТЬ ИГРУ (Эпилог - 1 раз)</button>
+            <div class="phase-control" style="margin-top: 10px;">
+                <button class="phase-btn" style="background:#1a4d80; border-color:#3399ff;" onclick="endGame('добро')">🎉 Победа Горожан</button>
+                <button class="phase-btn" style="background:#7a2a2a; border-color:#ff4444;" onclick="endGame('зло')">👹 Победа Демона</button>
+            </div>
+            <button id="btnPhaseStart" class="phase-btn" onclick="switchPhase('start')">🎬 НАЧАТЬ ИГРУ (Эпилог - 1 раз)</button>
             <div class="phase-grid-3">
-                <button id="btnPhaseNight" class="phase-btn" onclick="switchPhase('night')">🌌 НОЧЬ (По кругу)</button>
+                <button id="btnPhaseNight" class="phase-btn" onclick="switchPhase('night')">🌙 НОЧЬ (По кругу)</button>
                 <button id="btnPhaseDay" class="phase-btn" onclick="switchPhase('day')">☀️ ДЕНЬ (По кругу)</button>
-                <button id="btnPhaseStop" class="phase-btn" style="border-color:#5c2121; color:#ff8888;" onclick="switchPhase('stop')">🛑 СТОП ЗВУК</button>
+                <button id="btnPhaseStop" class="phase-btn" style="border-color:#5c2121; color:#ff8888;" onclick="switchPhase('stop')">⏹ СТОП ЗВУК</button>
             </div>
         </div>
         <div id="audioStatusText" class="audio-status">Музыка готова к запуску</div>
@@ -337,22 +254,18 @@
         </div>
     </div>
 
-    <div class="card" id="namingCard" style="display:none;">
-        <h2>Присвоить имя роли</h2>
-        <div id="poolContainer" class="setup-pool"></div>
+    <div class="card" id="namingCard">
+        <h2>2. Присвоить имя роли</h2>
+        <div id="poolContainer" class="setup-pool">
+            <p style="color:#888;">Укажите количество игроков и нажмите «Рассчитать»</p>
+        </div>
     </div>
 
     <div class="card">
-        <h2>Игроки за столом</h2>
-        <div id="playerList" class="player-list"></div>
-    </div>
-
-    <div class="card night-guide">
-        <h2>Порядок Ночи (Сценарий)</h2>
-        <h3>🌃 ПЕРВАЯ НОЧЬ ИГРЫ</h3>
-        <div id="firstNightOrder"></div>
-        <h3>🔄 КАЖДАЯ ПОСЛЕДУЮЩАЯ НОЧЬ</h3>
-        <div id="everyNightOrder"></div>
+        <h2>3. Игроки за столом</h2>
+        <div id="playerList" class="player-list">
+            <p style="color:#888;">За столом пока нет игроков</p>
+        </div>
     </div>
 
     <button class="clear-btn" onclick="clearGrimoire()">Сбросить всё и заново</button>
@@ -362,6 +275,8 @@
 <audio id="audioNight" src="Ночь.mp3" loop></audio>
 <audio id="audioSquare" src="Центральная площадь.mp3" loop></audio>
 <audio id="audioClock" src="Часы.mp3" loop></audio>
+<audio id="soundGood" src="Добро.mp3" preload="auto"></audio>
+<audio id="soundEvil" src="Демон.mp3" preload="auto"></audio>
 
 <script>
     let currentAudioTrack = null;
@@ -371,7 +286,7 @@
     let timerInterval = null;
     let timeLeft = 30; 
     let timerRunning = false;
-    let clockFadeInterval = null; // Для плавного изменения громкости часов
+    let clockFadeInterval = null;
 
     function fadeAndPlay(newTrack, trackName, isTimerCall = false, targetVolume = 1.0) {
         const fadeTime = 800;
@@ -419,7 +334,6 @@
                 return;
             }
             
-            // Если запускаем Часы, делаем плавное повышение громкости (Fade In) до 50%
             if (newTrack.id === 'audioClock') {
                 newTrack.volume = 0;
                 newTrack.play()
@@ -437,13 +351,12 @@
                             } else {
                                 newTrack.volume = vol;
                             }
-                        }, 100); // Повышаем за 1 секунду
+                        }, 100);
                     })
                     .catch(err => {
                         statusText.textContent = "⚠️ Нажмите на страницу, чтобы разрешить звук в браузере";
                     });
             } else {
-                // Обычные треки на 100% громкости
                 newTrack.volume = 1.0;
                 newTrack.play()
                     .then(() => {
@@ -468,10 +381,10 @@
 
         if (phase === 'start') {
             document.getElementById('btnPhaseStart').classList.add('active-start');
-            fadeAndPlay(document.getElementById('audioEpilogue'), "📊 Эпилог (Введение в игру — прозвучит 1 раз)");
+            fadeAndPlay(document.getElementById('audioEpilogue'), "🎬 Эпилог (Введение в игру — прозвучит 1 раз)");
         } else if (phase === 'night') {
             document.getElementById('btnPhaseNight').classList.add('active-night');
-            fadeAndPlay(document.getElementById('audioNight'), "🌌 Мрачная Ночь (Зациклено)");
+            fadeAndPlay(document.getElementById('audioNight'), "🌙 Мрачная Ночь (Зациклено)");
         } else if (phase === 'day') {
             document.getElementById('btnPhaseDay').classList.add('active-day');
             fadeAndPlay(document.getElementById('audioSquare'), "☀️ Центральная Площадь (Зациклено)");
@@ -487,7 +400,6 @@
             (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
     }
 
-    // Плавное затухание ТОЛЬКО для трека Часы
     function fadeOutClock(clockTrack, callback) {
         clearInterval(clockFadeInterval);
         let vol = clockTrack.volume;
@@ -501,7 +413,7 @@
             } else {
                 clockTrack.volume = vol;
             }
-        }, 80); // Понижаем примерно за 0.8 сек
+        }, 80);
     }
 
     function toggleTimer() {
@@ -509,7 +421,6 @@
         const clockTrack = document.getElementById('audioClock');
 
         if (timerRunning) {
-            // ПАУЗА
             clearInterval(timerInterval);
             timerRunning = false;
             startBtn.textContent = 'Старт';
@@ -519,7 +430,6 @@
                 fadeOutClock(clockTrack);
             }
         } else {
-            // СТАРТ
             if (timerInterval === null && !timerRunning) {
                 const inputVal = parseInt(document.getElementById('timerInput').value);
                 timeLeft = isNaN(inputVal) ? 30 : inputVal;
@@ -530,7 +440,6 @@
             startBtn.style.background = '#a67c1e';
             
             if (currentAudioTrack === clockTrack) {
-                // Если сняли с паузы, плавно возвращаем к 50% громкости
                 clockTrack.play();
                 let vol = clockTrack.volume;
                 clearInterval(clockFadeInterval);
@@ -544,7 +453,6 @@
                     }
                 }, 100);
             } else {
-                // Запускаем Часы с громкостью 0.5 (50%)
                 fadeAndPlay(clockTrack, "⏱ Последнее слово (Часы.mp3 — 50% громкости)", true, 0.5);
             }
             
@@ -556,7 +464,6 @@
                     startBtn.textContent = 'Старт';
                     startBtn.style.background = '#2a7a2a';
                     
-                    // Звуковой сигнал окончания времени
                     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                     const osc = audioCtx.createOscillator();
                     const gain = audioCtx.createGain();
@@ -567,7 +474,6 @@
                     osc.start();
                     osc.stop(audioCtx.currentTime + 0.4);
 
-                    // Плавно тушим часы и возвращаем фон дня/ночи
                     fadeOutClock(clockTrack, () => {
                         if (backgroundTrackBackup) {
                             fadeAndPlay(backgroundTrackBackup, backgroundTrackNameBackup.replace("Сейчас играет: ", ""));
@@ -620,94 +526,102 @@
         }
     });
 
+    // === 1. МАССИВ ВСЕХ РОЛЕЙ ===
     const allHeroes = [
-        { name: "Чтец", team: "townsfolk", activity: "1", hint: "В 1-ю ночь узнаёт, кто Изгой за столом." },
-        { name: "Повар", team: "townsfolk", activity: "1", hint: "В 1-ю ночь узнаёт имя одного гарантированно чистого мирного горожанина." },
-        { name: "Смотритель", team: "townsfolk", activity: "1", hint: "В 1-ю ночь выбирает игрока. Когда Смотритель погибнет, Стольник тайно раскрыет ему истинную роль этой цели." },
-        { name: "Эхо", team: "townsfolk", activity: "1", hint: "В 1-ю ночь выбирает игрока. Если Демон ночью убивает Эхо, выбранный злой приспешник тоже погибает." },
-        { name: "Глашатай", team: "townsfolk", activity: "1", hint: "В 1-ю ночь заявляет факт Стольнику. Если факт правдив, Стольник устроит дополнительную смерть в одну из ночей." },
-        { name: "Заклинатель", team: "townsfolk", activity: "1", hint: "В 1-ю ночь выбирает цель. При дневной казни этой цели Стольник публично подтверждает её роль." },
-        { name: "Знахарка", team: "townsfolk", activity: "1", hint: "В 1-ю ночь выбирает двух игроков. Если Демон проголосует днем за их казнь, Стольник подаст Знахарке знак." },
-        { name: "Кукловод", team: "townsfolk", activity: "1", hint: "В 1-ю ночь выбирает «куклу». Один раз за игру может тайно заставить Стольника развернуть голос этой куклы наоборот." },
-        { name: "Гадалка", team: "townsfolk", activity: "every", hint: "Каждую ночь проверяет двух игроков: есть ли среди них Демон. (Помнить про ложную цель-селедку)." },
-        { name: "Монах", team: "townsfolk", activity: "every", hint: "Каждую ночь выбирает игрока (кроме себя) для абсолютной защиты от ночной атаки Демона." },
-        { name: "Фокусник", team: "townsfolk", activity: "every", hint: "Каждую ночь выбирает игрока. Пытается угадать и временно поменяться ролями с Демоном." },
-        { name: "Медиум", team: "townsfolk", activity: "every", hint: "Каждую ночь выбирает цель. Если эта цель днем номинирует Медиума, она сама автоматически идет на казнь." },
-        { name: "Эмпат", team: "townsfolk", activity: "day", hint: "Действует ДНЕМ. Один раз за игру может публично встать и указать на игрока, пытаясь мгновенно уничтожить Демона." },
-        { name: "Святой", team: "townsfolk", activity: "day", hint: "Пассивный. Если город по ошибке казнит Святого днем — Добрая команда мгновенно проигрывает всю игру." },
-        { name: "Рыцарь", team: "townsfolk", activity: "day", hint: "Пассивный. Обладает железным иммунитетом к ночным убийствам Демона (Стольник отменяет нападение)." },
-        { name: "Пьяница", team: "outsider", activity: "day", hint: "Думает, что он мирный, но его сила заблокирована, а получаемая информация — ложная (контролируется Стольником)." },
-        { name: "Отшельник", team: "outsider", activity: "day", hint: "Пассивный. Из-за своей ауры при любых ночных проверках (Гадалка и др.) может казаться Приспешником или Демоном." },
-        { name: "Травитель", team: "minion", activity: "every", hint: "Злой. Каждую ночь отравляет одного игрока: его сила отключается, а информация становится ложной." },
-        { name: "Падшая", team: "minion", activity: "1", hint: "Злой. Если в игре >= 5 живых игроков и Демона казнят, Падшая забирает его силу и сама становится новым Демоном." },
-        { name: "Барон", team: "minion", activity: "1", hint: "Злой. Своим присутствием сразу в начале игры добавляет в пул +2 Изгоя за счет удаления двух Горожан." },
-        { name: "Лилит (Демон)", team: "demon", activity: "every", hint: "Главный враг. Каждую ночь просыпается, чтобы выбрать и убить одного игрока за столом." }
+        // --- ГОРОЖАНЕ ---
+        { name: "Чтец", team: "горожанин", activity: "1", hint: "В 1-ю ночь указывает на 2 игроков, чтобы узнать, есть ли среди них Изгой (или пропускает)." },
+        { name: "Повар", team: "горожанин", activity: "1", hint: "В 1-ю ночь узнаёт личность и роль одного горожанина от Мастера (или пропускает)." },
+        { name: "Гадалка", team: "горожанин", activity: "every", hint: "Каждую ночь проверяет двух игроков на наличие Демона (может пропустить)." },
+        { name: "Эмпат", team: "горожанин", activity: "every", hint: "Каждую ночь (если днем была казнь) узнает истинную роль казненного." },
+        { name: "Монах", team: "горожанин", activity: "every", hint: "Каждую ночь защищает одного игрока (кроме себя) от атаки Демона или пропускает." },
+        { name: "Фокусник", team: "горожанин", activity: "every", hint: "Каждую ночь может сделать 1 выбор за игру: указывает на игрока, который после смерти сможет голосовать КАЖДЫЙ день (а не 1 раз)." },
+        { name: "Цветочница", team: "горожанин", activity: "every", hint: "Каждую ночь узнает, голосовал ли Демон днем за казнь (Да/Нет) или пропускает." },
+        { name: "Сплетник", team: "горожанин", activity: "every", hint: "Каждую ночь тайно блокирует способности одного Приспешника или остается в тени." },
+        { name: "Торговец", team: "горожанин", activity: "day", hint: "Обычный человек, не имеет активных способностей." },
+        { name: "Судья", team: "горожанин", activity: "day", hint: "Дневная: 1 раз за игру при голосовании может удвоить свой голос или отменить казнь." },
+        { name: "Кукловод", team: "горожанин", activity: "day", hint: "Дневная: 1 раз за игру во время голосования принудительно меняет чей-то голос." },
+        { name: "Смотритель", team: "горожанин", activity: "day", hint: "Пассивная: Просыпается ТОЛЬКО при ночной смерти. Узнает роль любого игрока." },
+        { name: "Святой", team: "горожанин", activity: "day", hint: "Пассивная: Приносит поражение добру, если его казнят днем." },
+        { name: "Рыцарь", team: "горожанин", activity: "day", hint: "Пассивная: Имеет постоянный иммунитет к ночному убийству Демоном." },
+        { name: "Эхо", team: "горожанин", activity: "day", hint: "Пассивная: Убивает одного Приспешника в ответ, если сам погибает от Демона." },
+
+        // --- ИЗГОИ ---
+        { name: "Медиум", team: "изгой", activity: "day", hint: "Пассивная (Изгой): При дневной казни на след. день все ночные проверки инвертируются." },
+        { name: "Проклятый", team: "изгой", activity: "day", hint: "Пассивная (Изгой): Забирает с собой случайного доброго игрока при ночной гибели." },
+
+        // --- ПРИСПЕШНИКИ ---
+        { name: "Барон", team: "приспешник", activity: "1", hint: "В 1-ю ночь знакомится со Злом. Пассивно: заменяет сильных горожан на слабых изгоев." },
+        { name: "Травитель", team: "приспешник", activity: "every", hint: "Каждую ночь заставляет чужую силу давать ложный результат или пропускает." },
+        { name: "Падшая", team: "приспешник", activity: "every", hint: "Просыпается каждую ночь ТОЛЬКО если стала Демоном. Выбирает жертву для убийства." },
+
+        // --- ДЕМОН ---
+        { name: "Лилит (Демон)", team: "демон", activity: "every", hint: "Каждую ночь совершает убийство. Может убить себя, чтобы передать силу Демона Падшей." }
     ];
 
     const distributionTable = {
-        5:  { townsfolk: 3, outsider: 0, minion: 1 },
-        6:  { townsfolk: 3, outsider: 1, minion: 1 },
-        7:  { townsfolk: 5, outsider: 0, minion: 1 },
-        8:  { townsfolk: 5, outsider: 1, minion: 1 },
-        9:  { townsfolk: 5, outsider: 2, minion: 1 },
-        10: { townsfolk: 7, outsider: 0, minion: 2 },
-        11: { townsfolk: 7, outsider: 1, minion: 2 },
-        12: { townsfolk: 7, outsider: 2, minion: 2 },
-        13: { townsfolk: 9, outsider: 1, minion: 2 },
-        14: { townsfolk: 9, outsider: 1, minion: 3 },
-        15: { townsfolk: 9, outsider: 2, minion: 3 }
+        5:  { горожанин: 3, изгой: 0, приспешник: 1, демон: 1 },
+        6:  { горожанин: 3, изгой: 1, приспешник: 1, демон: 1 },
+        7:  { горожанин: 5, изгой: 0, приспешник: 1, демон: 1 },
+        8:  { горожанин: 5, изгой: 1, приспешник: 1, демон: 1 },
+        9:  { горожанин: 5, изгой: 2, приспешник: 1, демон: 1 },
+        10: { горожанин: 7, изгой: 0, приспешник: 2, демон: 1 },
+        11: { горожанин: 7, изгой: 1, приспешник: 2, демон: 1 },
+        12: { горожанин: 7, изгой: 2, приспешник: 2, демон: 1 },
+        13: { горожанин: 9, изгой: 1, приспешник: 2, демон: 1 },
+        14: { горожанин: 9, изгой: 1, приспешник: 3, демон: 1 },
+        15: { горожанин: 9, изгой: 2, приспешник: 3, демон: 1 }
     };
-
-    const firstNightSequence = ["Травитель", "Барон", "Падшая", "Лилит (Демон)", "Чтец", "Повар", "Смотритель", "Эхо", "Глашатай", "Заклинатель", "Знахарка", "Кукловод"];
-    const everyNightSequence = ["Травитель", "Монах", "Фокусник", "Лилит (Демон)", "Гадалка", "Медиум"];
 
     let players = [];
     let currentPool = [];
+
+    function shuffle(array) {
+        let arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
 
     function setupGame() {
         const countInput = document.getElementById('totalPlayersCount');
         const count = parseInt(countInput.value);
 
-        if (isNaN(count) || count < 5 || count > 15) {
-            alert("Введите число игроков от 5 до 15");
+        if (!count || count < 5 || count > 15) {
+            alert("Пожалуйста, укажите количество игроков от 5 до 15.");
             return;
         }
 
-        const limits = distributionTable[count];
-        
-        let tPool = allHeroes.filter(h => h.team === 'townsfolk');
-        let oPool = allHeroes.filter(h => h.team === 'outsider');
-        let mPool = allHeroes.filter(h => h.team === 'minion');
-        let dPool = allHeroes.filter(h => h.team === 'demon');
+        const dist = distributionTable[count];
+        const tfPool = shuffle(allHeroes.filter(h => h.team === 'горожанин'));
+        const outPool = shuffle(allHeroes.filter(h => h.team === 'изгой'));
+        const minPool = shuffle(allHeroes.filter(h => h.team === 'приспешник'));
+        const demPool = shuffle(allHeroes.filter(h => h.team === 'демон'));
 
-        let shuffle = (arr) => arr.map(a => ({sort: Math.random(), value: a})).sort((a, b) => a.sort - b.sort).map(a => a.value);
+        currentPool = [
+            ...tfPool.slice(0, dist.горожанин),
+            ...outPool.slice(0, dist.изгой),
+            ...minPool.slice(0, dist.приспешник),
+            ...demPool.slice(0, dist.демон)
+        ];
 
-        let selectedTownsfolk = shuffle(tPool).slice(0, limits.townsfolk);
-        let selectedOutsiders = shuffle(oPool).slice(0, limits.outsider);
-        let selectedMinions = shuffle(mPool).slice(0, limits.minion);
-        let selectedDemon = shuffle(dPool).slice(0, 1);
-
-        currentPool = [];
-        currentPool = currentPool.concat(selectedTownsfolk, selectedOutsiders, selectedMinions, selectedDemon);
-        players = []; 
-
+        currentPool = shuffle(currentPool);
+        players = [];
+        renderPool();
         render();
     }
 
-    function assignNameToRole(index) {
-        const nameInput = document.getElementById(`input-pool-${index}`);
-        const name = nameInput.value.trim();
-
-        if (!name) {
+    function assignNameToRole(roleIndex, name) {
+        if (!name.trim()) {
             alert("Введите имя игрока!");
             return;
         }
-
-        const role = currentPool[index];
+        const role = currentPool[roleIndex];
 
         players.push({
             id: Date.now() + Math.random(),
-            name: name,
+            name: name.trim(),
             role: role.name,
             team: role.team,
             activity: role.activity,
@@ -715,226 +629,232 @@
             dead: false,
             poisoned: false,
             protected: false,
-            hasVote: true
+            hasVote: true,
+            usedAbility: false,
+            silenced: false,
+            hasInfiniteVote: false
         });
 
-        currentPool.splice(index, 1);
+        currentPool.splice(roleIndex, 1);
+        renderPool();
         render();
     }
 
-function toggleDead(id) {
-    const p = players.find(x => x.id === id);
-    if(p) {
-        p.dead = !p.dead;
-        if(!p.dead) p.hasVote = true;
-        
-        render(); // У вас функция называется render, а не renderPlayers
-        checkGameOver();
+    function toggleDead(id) {
+        const p = players.find(x => x.id === id);
+        if (p) {
+            p.dead = !p.dead;
+            if (!p.dead || p.hasInfiniteVote) p.hasVote = true;
+            render();
+            checkGameOver();
+        }
     }
-}
 
     function toggleVote(id) {
         const p = players.find(x => x.id === id);
-        if(p && p.dead) p.hasVote = !p.hasVote;
-        render();
+        if (p) { p.hasVote = !p.hasVote; render(); }
     }
 
     function togglePoison(id) {
         const p = players.find(x => x.id === id);
-        if(p) p.poisoned = !p.poisoned;
-        render();
+        if (p) { p.poisoned = !p.poisoned; render(); }
     }
 
     function toggleProject(id) {
         const p = players.find(x => x.id === id);
-        if(p) p.protected = !p.protected;
-        render();
+        if (p) { p.protected = !p.protected; render(); }
+    }
+
+    function toggleUsedAbility(id) {
+        const p = players.find(x => x.id === id);
+        if (p) { p.usedAbility = !p.usedAbility; render(); }
+    }
+
+    function toggleSilenced(id) {
+        const p = players.find(x => x.id === id);
+        if (p) { p.silenced = !p.silenced; render(); }
+    }
+
+    function toggleInfiniteVote(id) {
+        const p = players.find(x => x.id === id);
+        if (p) { 
+            p.hasInfiniteVote = !p.hasInfiniteVote; 
+            if (p.hasInfiniteVote) p.hasVote = true;
+            render(); 
+        }
     }
 
     function deletePlayer(id) {
-        const p = players.find(x => x.id !== id);
-        if(p) {
+        const idx = players.findIndex(x => x.id === id);
+        if (idx !== -1) {
+            const p = players[idx];
             currentPool.push({ name: p.role, team: p.team, activity: p.activity, hint: p.hint });
-            players = players.filter(x => x.id !== id);
+            players.splice(idx, 1);
+            renderPool();
+            render();
         }
-        render();
     }
 
-    function clearGrimoire() {
-        switchPhase('stop');
-        resetTimer();
-        players = [];
-        currentPool = [];
-        document.getElementById('totalPlayersCount').value = '';
+    function demonSelfKill(demonId) {
+        const demon = players.find(x => x.id === demonId);
+        if (!demon) return;
+
+        if (!confirm(`Демон (${demon.name}) убивает себя! Передать силу Демона Приспешнику?`)) return;
+
+        demon.dead = true;
+        const fallen = players.find(p => p.role === 'Падшая' && !p.dead);
+
+        if (fallen) {
+            fallen.role = 'Лилит (Демон)';
+            fallen.team = 'демон';
+            fallen.hint = 'Приняла силу Демона от погибшей Лилит!';
+            alert(`🔥 Демон погиб! Игрок ${fallen.name} (Падшая) становится новым Демоном!`);
+        } else {
+            const minion = players.find(p => p.team === 'приспешник' && !p.dead);
+            if (minion) {
+                if (confirm(`Падшей нет. Сделать роль "${minion.role}" (${minion.name}) новым Демоном?`)) {
+                    minion.role = 'Лилит (Демон)';
+                    minion.team = 'демон';
+                    minion.hint = 'Принял(а) силу Демона после самоубийства Лилит!';
+                    alert(`🔥 Игрок ${minion.name} теперь новый Демон!`);
+                }
+            } else {
+                alert("⚠️ Живых Приспешников за столом не найдено!");
+            }
+        }
         render();
+        checkGameOver();
+    }
+
+    function endGame(winner) {
+        document.querySelectorAll('audio').forEach(a => { a.pause(); a.currentTime = 0; });
+        if (winner === 'добро') {
+            const sound = document.getElementById('soundGood');
+            if (sound) sound.play();
+            alert("🎉 ПОБЕДА ГОРОЖАН (ДОБРО)!");
+        } else if (winner === 'зло') {
+            const sound = document.getElementById('soundEvil');
+            if (sound) sound.play();
+            alert("👹 ПОБЕДА ДЕМОНА (ЗЛО)!");
+        }
+    }
+
+    function checkGameOver() {
+        let livingGood = 0;
+        let livingEvil = 0;
+        let isDemonAlive = false;
+
+        players.forEach(p => {
+            if (!p.dead) {
+                if (p.team === 'демон') { livingEvil++; isDemonAlive = true; }
+                else if (p.team === 'приспешник') { livingEvil++; }
+                else if (p.team === 'горожанин' || p.team === 'изгой') { livingGood++; }
+            }
+        });
+
+        if (players.length > 0) {
+            if (!isDemonAlive) endGame('добро');
+            else if (livingEvil > 0 && livingGood <= 1) endGame('зло');
+        }
+    }
+
+    function renderPool() {
+        const poolContainer = document.getElementById('poolContainer');
+        if (!poolContainer) return;
+
+        if (currentPool.length === 0) {
+            poolContainer.innerHTML = `<p style="color:#888;">Все карты ролей распределены!</p>`;
+            return;
+        }
+
+        poolContainer.innerHTML = currentPool.map((r, i) => `
+            <div style="background:#222; border:1px solid #444; padding:10px; margin:6px 0; border-radius:6px; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <b style="color:#ffcc00; font-size:1.1rem;">${r.name}</b> <small class="badge-${r.team}">(${r.team})</small>
+                </div>
+                <div style="display:flex; gap:6px;">
+                    <input type="text" id="input_role_${i}" placeholder="Имя игрока" style="padding:6px; border-radius:4px; border:1px solid #555; background:#111; color:#fff;">
+                    <button onclick="assignNameToRole(${i}, document.getElementById('input_role_${i}').value)" class="btn-add">✓ В стол</button>
+                </div>
+            </div>
+        `).join('');
     }
 
     function render() {
-        const namingCard = document.getElementById('namingCard');
-        const poolContainer = document.getElementById('poolContainer');
-        poolContainer.innerHTML = '';
-
-        if(currentPool.length > 0) {
-            namingCard.style.display = 'block';
-            currentPool.forEach((role, idx) => {
-                const div = document.createElement('div');
-                div.className = 'setup-item';
-                div.innerHTML = `
-                    <div class="setup-item-header">
-                        <span class="player-role ${role.team}" style="font-weight:bold;">${role.name}</span>
-                        <div style="display:flex; gap:5px;">
-                            <input type="text" id="input-pool-${idx}" placeholder="Имя игрока" autocomplete="off" style="padding:6px; max-width:140px;">
-                            <button class="btn-add" style="padding:6px 12px;" onclick="assignNameToRole(${idx})">✓</button>
-                        </div>
-                    </div>
-                    <div class="role-hint"><b>Сила:</b> ${role.hint}</div>
-                `;
-                poolContainer.appendChild(div);
-            });
-        } else {
-            namingCard.style.display = 'none';
-        }
-
         const listContainer = document.getElementById('playerList');
-        listContainer.innerHTML = '';
+        if (!listContainer) return;
 
-        if(players.length === 0) {
-            listContainer.innerHTML = '<p style="text-align:center; color:#666;">Введите количество игроков выше для старта расчета</p>';
+        if (players.length === 0) {
+            listContainer.innerHTML = `<p style="color:#888;">За столом пока нет игроков</p>`;
+            return;
         }
 
-        players.forEach(p => {
-            const row = document.createElement('div');
-            row.className = `player-row ${p.dead ? 'dead' : ''}`;
-            
-            row.innerHTML = `
-                <div class="player-info">
-                    <span class="player-name">${p.name}</span>
-                    <span class="player-role ${p.team}">${p.role}</span>
+        listContainer.innerHTML = players.map(p => `
+            <div class="card-${p.team}" style="margin:10px 0; padding:12px; border-radius:8px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h3>${p.name} — <span style="color:#ffcc00;">${p.role}</span></h3>
+                    <span>${p.dead ? '💀 МЕРТВ' : '🟢 ЖИВ'}</span>
                 </div>
-                <div style="font-size:0.8rem; color:#aaa; margin-bottom:4px;"><b>Памятка:</b> ${p.hint}</div>
+                <p style="font-size:0.85rem; color:#aaa; margin:4px 0;">${p.hint}</p>
                 
-                <div class="status-buttons-grid">
-                    <div class="full-btn ${p.dead ? 'btn-state-dead' : 'btn-state-ok'}" onclick="toggleDead(${p.id})">
-                        <span>Состояние здоровья:</span>
-                        <span><b>${p.dead ? '💀 МЕРТВ' : '🟢 ЖИВ'}</b></span>
-                    </div>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:6px; margin-top:8px;">
+                    <button onclick="toggleDead(${p.id})" style="padding:6px; background:${p.dead ? '#555' : '#28a745'}; color:#fff; border:none; border-radius:4px;">
+                        ${p.dead ? 'Воскресить' : 'Убить'}
+                    </button>
 
                     ${p.dead ? `
-                        <div class="full-btn ${p.hasVote ? 'btn-state-vote-yes' : 'btn-state-vote-no'}" onclick="toggleVote(${p.id})">
-                            <span>Право на 1 последний голос:</span>
-                            <span><b>${p.hasVote ? '🎫 ДОСТУПЕН' : '❌ ИСПОЛЬЗОВАН'}</b></span>
-                        </div>
+                        <button onclick="toggleVote(${p.id})" style="padding:6px; background:${p.hasVote ? '#007bff' : '#444'}; color:#fff; border:none; border-radius:4px;">
+                            Голос: ${p.hasVote ? '🎫 Есть' : '❌ Нет'}
+                        </button>
                     ` : ''}
 
-                    <div class="full-btn ${p.poisoned ? 'btn-state-poison' : 'btn-state-ok'}" onclick="togglePoison(${p.id})">
-                        <span>Статус ментальной силы:</span>
-                        <span><b>${p.poisoned ? '🤢 ОТРАВЛЕН / ПЬЯН (Ложь)' : '💎 Здоров (Истина)'}</b></span>
-                    </div>
+                    <button onclick="togglePoison(${p.id})" style="padding:6px; background:${p.poisoned ? '#8a2be2' : '#333'}; color:#fff; border:none; border-radius:4px;">
+                        ${p.poisoned ? '🤢 Отравлен' : '💎 Здоров'}
+                    </button>
 
-                    <div class="full-btn ${p.protected ? 'btn-state-monk' : 'btn-state-ok'}" onclick="toggleProject(${p.id})">
-                        <span>Святая защита этой ночью:</span>
-                        <span><b>${p.protected ? '🛡 ЗАЩИЩЕН МОНАХОМ' : '🌕 Нет защиты'}</b></span>
-                    </div>
+                    <button onclick="toggleProject(${p.id})" style="padding:6px; background:${p.protected ? '#17a2b8' : '#333'}; color:#fff; border:none; border-radius:4px;">
+                        ${p.protected ? '🛡 Под защитой' : '🌕 Без защиты'}
+                    </button>
 
-                    <button style="background:#2a1212; color:#ff8888; border:1px solid #4a1c1c; padding:6px; border-radius:6px; margin-top:4px; font-size:0.85rem;" onclick="deletePlayer(${p.id})">
-                        🗑 Вернуть карту обратно в пул раздачи
+                    <button onclick="toggleSilenced(${p.id})" style="padding:6px; background:${p.silenced ? '#6c757d' : '#333'}; color:#fff; border:none; border-radius:4px;">
+                        ${p.silenced ? '🔇 Блок Сплетника' : '🔊 Активен'}
+                    </button>
+
+                    <button onclick="toggleInfiniteVote(${p.id})" style="padding:6px; background:${p.hasInfiniteVote ? '#9b51e0' : '#333'}; color:#fff; border:none; border-radius:4px;">
+                        ${p.hasInfiniteVote ? '✨ Вечный голос' : '⚪ Обычный голос'}
+                    </button>
+
+                    ${(p.role === 'Судья' || p.role === 'Кукловод' || p.role === 'Фокусник') ? `
+                        <button onclick="toggleUsedAbility(${p.id})" style="padding:6px; background:${p.usedAbility ? '#dc3545' : '#ffc107'}; color:${p.usedAbility ? '#fff' : '#000'}; border:none; border-radius:4px; grid-column: span 2;">
+                            Способность: ${p.usedAbility ? '❌ Использована' : '⚡️ Готова'}
+                        </button>
+                    ` : ''}
+
+                    ${(p.team === 'демон' && !p.dead) ? `
+                        <button onclick="demonSelfKill(${p.id})" style="padding:8px; background:#610505; color:#ff9999; border:1px solid #ff0000; border-radius:4px; font-weight:bold; grid-column: span 2; cursor:pointer;">
+                            👹 СЕЛЬФ-КИЛЛ: Убить себя и передать силу
+                        </button>
+                    ` : ''}
+
+                    <button onclick="deletePlayer(${p.id})" style="padding:6px; background:#2a1212; color:#ff8888; border:1px solid #4a1c1c; border-radius:4px; grid-column: span 2; margin-top:4px;">
+                        🗑 Вернуть карту в пул
                     </button>
                 </div>
-            `;
-            listContainer.appendChild(row);
-        });
-
-        renderNightOrders();
+            </div>
+        `).join('');
     }
 
-    function renderNightOrders() {
-        const firstNightContainer = document.getElementById('firstNightOrder');
-        const everyNightContainer = document.getElementById('everyNightOrder');
-        
-        firstNightContainer.innerHTML = '';
-        everyNightContainer.innerHTML = '';
-
-        firstNightSequence.forEach(role => {
-            const activeInGame = players.filter(p => p.role === role);
-            if (activeInGame.length > 0) {
-                activeInGame.forEach(p => {
-                    const item = document.createElement('div');
-                    item.className = 'night-item';
-                    item.innerHTML = `Разбудить: <b>${p.role}</b> (${p.name}). <br><small style="color:#ccc;">${p.hint}</small> ${p.poisoned ? '<br><span style="color:#ffd700; font-weight:bold;">⚠️ ВНИМАНИЕ: Игрок отравлен/пьян! Выдать ему ЛОЖНУЮ информацию!</span>' : ''}`;
-                    firstNightContainer.appendChild(item);
-                });
-            }
-        });
-
-        everyNightSequence.forEach(role => {
-            const activeInGame = players.filter(p => p.role === role);
-            if (activeInGame.length > 0) {
-                activeInGame.forEach(p => {
-                    const item = document.createElement('div');
-                    item.className = `night-item ${p.dead && p.role !== 'Медиум' ? 'inactive' : ''}`;
-                    
-                    let statusNote = `<br><small style="color:#ccc;">${p.hint}</small>`;
-                    if (p.dead && p.role !== 'Медиум') {
-                        statusNote += '<br><span style="color:#777;">(Игрок мертв — полностью пропускаем его пробуждение)</span>';
-                    } else {
-                        if (p.poisoned) statusNote += '<br><span style="color:#ffd700; font-weight:bold;">⚠️ ВНИМАНИЕ: Отравлен! Его ночной выбор сгорает без эффекта, либо дайте искаженную инфу!</span>';
-                        if (p.protected && p.role === 'Лилит (Демон)') statusNote += '<br><span style="color:#8ec5fc; font-weight:bold;">🛡 ЗАМЕТКА: Если Демон выберет защищенного Монахом игрока, ночного убийства не произойдет.</span>';
-                    }
-
-                    item.innerHTML = `Разбудить: <b>${p.role}</b> (${p.name})${statusNote}`;
-                    everyNightContainer.appendChild(item);
-                });
-            }
-        });
-
-        if(firstNightContainer.innerHTML === '') firstNightContainer.innerHTML = '<p style="color:#555;">Нет активных ролей на 1-ю ночь</p>';
-        if(everyNightContainer.innerHTML === '') everyNightContainer.innerHTML = '<p style="color:#555;">Нет активных ролей на последующие ночи</p>';
-    }
-
-    render();
-// Функция конца игры (звук + алерт)
-function endGame(winner) {
-    // Останавливаем всё
-    document.querySelectorAll('audio').forEach(a => { 
-        a.pause(); 
-        a.currentTime = 0; 
-    });
-
-    if (winner === 'good') {
-        const sound = document.getElementById('soundGood');
-        if (sound) sound.play();
-        alert("Победа Горожан!");
-    } else if (winner === 'evil') {
-        const sound = document.getElementById('soundEvil');
-        if (sound) sound.play();
-        alert("Победа Демона!");
-    }
-}
-
-// Функция проверки условий победы
-function checkGameOver() {
-    let livingGood = 0;
-    let livingEvil = 0;
-    let isDemonAlive = false;
-
-    players.forEach(p => {
-        if (!p.dead) {
-            if (p.team === 'demon') { livingEvil++; isDemonAlive = true; }
-            else if (p.team === 'minion') { livingEvil++; }
-            else if (p.team === 'townsfolk' || p.team === 'outsider') { livingGood++; }
+    function clearGrimoire() {
+        if (confirm("Вы уверены, что хотите сбросить всю партию?")) {
+            players = [];
+            currentPool = [];
+            renderPool();
+            render();
         }
-    });
+    }
 
-    if (!isDemonAlive) { endGame('good'); }
-    else if (livingEvil > 0 && livingGood <= 1) { endGame('evil'); }
-}
+    updateTimerDisplay();
 </script>
-<audio id="soundGood" src="Добро.mp3" preload="auto"></audio>
-<audio id="soundEvil" src="Демон.mp3" preload="auto"></audio>
 
-<div style="text-align: center; margin: 20px 0;">
-    <button onclick="endGame('good')">Победа Горожан</button>
-    <button onclick="endGame('evil')">Победа Демона</button>
-</div>
 </body>
 </html>
